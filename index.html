@@ -3,148 +3,320 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ANALUA LASH</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- SEO PRINCIPAL -->
+<title>ANALUA LASH | Acessórios Premium para Extensão de Cílios</title>
+<meta name="description" content="Loja oficial ANALUA LASH. Cílios, colas, pinças e acessórios premium para lash designers. Envio rápido e pagamento seguro.">
+<meta name="keywords" content="cílios profissional, extensão de cílios, cola para cílios, pinça lash, acessórios lash">
+<meta name="author" content="ANALUA LASH">
+<meta name="robots" content="index, follow">
+
+<!-- OPEN GRAPH -->
+<meta property="og:title" content="ANALUA LASH - Loja Premium para Lash Designers">
+<meta property="og:description" content="Produtos profissionais para elevar seu atendimento.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1588776814546-ec7e84ec06e0">
+
+<!-- FAVICON -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<!-- FONTES -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
+html { scroll-behavior: smooth; }
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #000;
-    color: white;
+    background: #FFF8F5;
+    color: #333;
+    overflow-x: hidden;
 }
 
-header {
-    background: black;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid #D4AF37;
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(255, 248, 245, 0.95);
+    border-bottom: 1px solid #E8C1C1;
+    z-index: 999;
 }
 
-header h1 {
+.logo {
     font-family: 'Playfair Display', serif;
-    color: #D4AF37;
-    letter-spacing: 3px;
+    color: #D9868F;
+    font-size: 22px;
+    letter-spacing: 2px;
 }
 
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: #D9868F;
+}
+
+/* BANNER */
 .banner {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1627894516352-1c6b6f5854e5') center/cover fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(to bottom, #000, #111);
+    position: relative;
 }
 
-.banner h2 {
-    font-size: 40px;
-    color: #D4AF37;
+.banner::after {
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background: rgba(255,248,245,0.85);
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeDown 1.5s ease;
+}
+
+.banner h1 {
+    font-size: 50px;
+    color: #D9868F;
+    margin-bottom: 15px;
 }
 
 .banner p {
     font-size: 18px;
-    margin: 20px 0;
+    color: #555;
+    margin-bottom: 30px;
 }
 
 .btn {
-    display: inline-block;
-    padding: 12px 30px;
-    margin: 10px;
-    border: 1px solid #D4AF37;
-    color: #D4AF37;
+    padding: 14px 35px;
+    border: 2px solid #D9868F;
+    color: #D9868F;
     text-decoration: none;
-    transition: 0.3s;
+    margin: 10px;
+    display: inline-block;
+    transition: 0.4s;
+    font-weight: 600;
+    border-radius: 30px;
 }
 
 .btn:hover {
-    background: #D4AF37;
-    color: black;
+    background: #D9868F;
+    color: white;
 }
 
+/* PRODUTOS */
 .section {
-    padding: 60px 20px;
+    padding: 100px 40px;
     text-align: center;
+}
+
+.section h2 {
+    color: #D9868F;
+    margin-bottom: 60px;
 }
 
 .products {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
 }
 
 .card {
-    background: #111;
+    background: #FFF0F2;
+    width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.5s;
+    box-shadow: 0 5px 20px rgba(217,134,143,0.2);
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(217,134,143,0.4);
+}
+
+.card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.card-content {
     padding: 20px;
-    width: 250px;
-    border: 1px solid #D4AF37;
 }
 
-.card h3 {
-    color: #D4AF37;
+.price {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #D9868F;
 }
 
+.badge {
+    background: #D9868F;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+/* CONTADOR */
+.counter {
+    font-size: 40px;
+    color: #D9868F;
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
 footer {
     text-align: center;
-    padding: 20px;
-    border-top: 1px solid #D4AF37;
+    padding: 30px;
+    border-top: 1px solid #E8C1C1;
+    color: #555;
+}
+
+/* WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 28px;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeDown {
+    from {opacity:0; transform: translateY(-40px);}
+    to {opacity:1; transform: translateY(0);}
 }
 </style>
 </head>
 <body>
 
-<header>
-    <h1>ANALUA LASH</h1>
-</header>
+<nav>
+<div class="logo">ANALUA LASH</div>
+<ul>
+<li><a href="#home">Início</a></li>
+<li><a href="#produtos">Produtos</a></li>
+<li><a href="#sobre">Sobre</a></li>
+</ul>
+</nav>
 
-<section class="banner">
-    <h2>Eleve sua arte. Trabalhe com excelência.</h2>
-    <p>Acessórios premium para lash designers exigentes.</p>
-    <a href="#produtos" class="btn">Comprar Agora</a>
-    <a href="https://wa.me/5545988031561" class="btn">Falar no WhatsApp</a>
+<section class="banner" id="home">
+<div class="banner-content">
+<h1>Beleza & Sofisticação</h1>
+<p>Produtos premium para lash designers</p>
+<a href="#produtos" class="btn">Comprar Agora</a>
+<a href="https://wa.me/5545988031561" class="btn">WhatsApp</a>
+</div>
 </section>
 
 <section class="section" id="produtos">
-    <h2 style="color:#D4AF37;">Produtos em Destaque</h2>
-    <div class="products">
-        <div class="card">
-            <h3>Cílios Volume Brasileiro</h3>
-            <p>Leves, macios e naturais.</p>
-        </div>
-        <div class="card">
-            <h3>Pinça Premium</h3>
-            <p>Precisão e conforto.</p>
-        </div>
-        <div class="card">
-            <h3>Cola Ultra Fixação</h3>
-            <p>Alta retenção e secagem rápida.</p>
-        </div>
-    </div>
+<h2>Mais Vendidos</h2>
+<div class="products">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1628208570334-d5b7f1f4f8a3">
+<div class="card-content">
+<span class="badge">Mais Vendido</span>
+<h3>Cílios Volume Brasileiro</h3>
+<p class="price">R$ 39,90</p>
+<a href="#" class="btn">Comprar</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1588776814546-ec7e84ec06e0">
+<div class="card-content">
+<h3>Pinça Premium</h3>
+<p class="price">R$ 59,90</p>
+<a href="#" class="btn">Comprar</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1616394584738-fc6e612d8b63">
+<div class="card-content">
+<h3>Cola Ultra Fixação</h3>
+<p class="price">R$ 79,90</p>
+<a href="#" class="btn">Comprar</a>
+</div>
+</div>
+</div>
 </section>
 
-<section class="section">
-    <h2 style="color:#D4AF37;">Por que escolher a ANALUA LASH?</h2>
-    <p>Produtos selecionados, envio rápido e qualidade profissional para elevar seu atendimento.</p>
+<section class="section" id="sobre">
+<h2>ANALUA LASH em Números</h2>
+<div class="counter" id="contador">0</div>
+<p>Clientes satisfeitas</p>
 </section>
 
 <footer>
-    <p>© 2026 ANALUA LASH - Todos os direitos reservados</p>
+© 2026 ANALUA LASH - Loja Oficial
 </footer>
-<a href="https://wa.me/55SEUNUMERO" class="whatsapp-float" target="_blank">💬</a>
 
-<style>
-.whatsapp-float {
-position: fixed;
-width: 60px;
-height: 60px;
-bottom: 30px;
-right: 30px;
-background-color: #25D366;
-color: #FFF;
-border-radius: 50%;
-text-align: center;
-font-size: 30px;
-line-height: 60px;
-box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
-z-index: 100;
-text-decoration: none;
+<a href="https://wa.me/5545988031561" class="whatsapp">💬</a>
+
+<script>
+/* ANIMAÇÃO DOS CARDS */
+const cards = document.querySelectorAll('.card');
+window.addEventListener('scroll', () => {
+cards.forEach(card => {
+const cardTop = card.getBoundingClientRect().top;
+if(cardTop < window.innerHeight - 100){
+card.classList.add('show');
 }
-</style>
+});
+});
+
+/* CONTADOR ANIMADO */
+let contador = document.getElementById('contador');
+let numero = 0;
+let intervalo = setInterval(() => {
+numero += 5;
+contador.textContent = numero;
+if(numero >= 500){
+clearInterval(intervalo);
+}
+}, 20);
+</script>
+
 </body>
 </html>
